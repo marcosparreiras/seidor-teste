@@ -19,4 +19,8 @@ export class InMemoryDriverRepository implements DriverRepository {
     );
     this.items[index] = driver;
   }
+
+  async delete(driver: Driver): Promise<void> {
+    this.items = this.items.filter((item) => item.getId() !== driver.getId());
+  }
 }

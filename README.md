@@ -1,9 +1,10 @@
 # Seidor - Teste Técnico
 
 ## Requisitos Funcionais
-- [] Deve ser possível cadastrar um novo automóvel
-- [] Deve ser possível atualizar os dados de um automóvel cadastrado
-- [] Deve ser possível excluir um automóvel cadastrado
+
+- [x] Deve ser possível cadastrar um novo automóvel
+- [x] Deve ser possível atualizar os dados de um automóvel cadastrado
+- [x] Deve ser possível excluir um automóvel cadastrado
 - [] Deve ser possível recuperar um automóvel pelo seu id
 - [] Deve ser possível listar os automóveis cadastrados e utilizar filtos de marca e cor na listagem
 - [] Deve ser possível cadastrar um novo motorista
@@ -15,10 +16,12 @@
 - [] Deve ser possível listar todos os registros de utilização de automóveis incluindo os dados do motorista e do automóvel utilizado
 
 ## Regras de Negócio
+
 - [] Um automóvel só pode ser utilizado por um motorista por véz
 - [] Um motorista só pode utilizar um autómovel por véz
 
 ## Requisitos Não Funcionais
+
 - [] O código fonte deve estar disponível em um repositório git público
 - [] O código deve possuir testes automatizados de unidade
 - [] O código deve estar limpo e organizado

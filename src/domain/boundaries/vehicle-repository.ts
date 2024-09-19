@@ -5,4 +5,5 @@ export interface VehicleRepository {
   findByPlate(plate: string): Promise<Vehicle | null>;
   insert(vehicle: Vehicle): Promise<void>;
   update(vehicle: Vehicle): Promise<void>;
+  delete(vehicle: Vehicle): Promise<void>;
 }

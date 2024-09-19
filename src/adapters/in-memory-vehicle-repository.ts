@@ -24,4 +24,8 @@ export class InMemoryVehicleRepository implements VehicleRepository {
     );
     this.items[index] = vehicle;
   }
+
+  async delete(vehicle: Vehicle): Promise<void> {
+    this.items = this.items.filter((item) => item.getId() !== vehicle.getId());
+  }
 }

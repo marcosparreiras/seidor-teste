@@ -1,15 +1,18 @@
 import { InMemoryVehicleRepository } from "../../adapters/in-memory-vehicle-repository";
+import { DomainRegistry } from "../boundaries/domain-registry";
 import { Vehicle } from "../entities/vehicle";
 import { VehicleAlreadyExistsException } from "../exceptions/vehicle-already-exists-exception";
 import { RegisterVehicleUseCase } from "./register-vehicle-use-case";
 
 describe("RegisterVehicleUseCase", () => {
-  let vehicleRepository: InMemoryVehicleRepository;
   let sut: RegisterVehicleUseCase;
+  let vehicleRepository: InMemoryVehicleRepository;
 
   beforeEach(() => {
+    sut = new RegisterVehicleUseCase();
     vehicleRepository = new InMemoryVehicleRepository();
-    sut = new RegisterVehicleUseCase(vehicleRepository);
+    const registry = DomainRegistry.getInstance();
+    registry.register("vehicleRepository", vehicleRepository);
   });
 
   it("Should be able to register a new vehicle", async () => {

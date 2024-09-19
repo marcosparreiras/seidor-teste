@@ -1,3 +1,4 @@
+import { DomainRegistry, inject } from "../boundaries/domain-registry";
 import type { VehicleRepository } from "../boundaries/vehicle-repository";
 import { Vehicle } from "../entities/vehicle";
 import { VehicleAlreadyExistsException } from "../exceptions/vehicle-already-exists-exception";
@@ -13,7 +14,13 @@ type Output = {
 };
 
 export class RegisterVehicleUseCase {
-  public constructor(private vehicleRepository: VehicleRepository) {}
+  @inject("vehicleRepository")
+  private vehicleRepository!: VehicleRepository;
+
+  public constructor() {
+    // this.vehicleRepository =
+    //   DomainRegistry.getInstance().inject("vehicleRepository");
+  }
 
   public async execute(input: Input): Promise<Output> {
     const vehicleExists = await this.vehicleRepository.findByPlate(input.plate);

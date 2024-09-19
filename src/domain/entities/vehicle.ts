@@ -16,12 +16,19 @@ export class Vehicle {
   public getId(): string {
     return this.id.toString();
   }
+
   public getPlate(): string {
     return this.plate.toString();
   }
+
   public getColor(): string {
     return this.color;
   }
+
+  public setColor(color: string): void {
+    this.color = color;
+  }
+
   public getBrand(): string {
     return this.brand;
   }

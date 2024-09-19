@@ -13,7 +13,7 @@
 - [] Deve ser possível recuperar um motorista pelo seu id
 - [] Deve ser possível listar os motoristas cadastrados e utilizar filtro de nome na listagem
 - [x] Deve ser possível registrar a utilização de um automóvel por um motorista, esse registro deve conter data de início e descrição do motivo de utilização
-- [] Deve ser possível encerrar a utilização do automóvel pelo motorista e incluir a data de encerramento no registro de utilização
+- [x] Deve ser possível encerrar a utilização do automóvel pelo motorista e incluir a data de encerramento no registro de utilização
 - [] Deve ser possível listar todos os registros de utilização de automóveis incluindo os dados do motorista e do automóvel utilizado
 
 ## Regras de Negócio

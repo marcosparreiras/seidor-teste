@@ -1,8 +1,23 @@
-import type { VehicleRepository } from "../domain/boundaries/vehicle-repository";
+import type {
+  Filters,
+  VehicleRepository,
+} from "../domain/boundaries/vehicle-repository";
 import type { Vehicle } from "../domain/entities/vehicle";
 
 export class InMemoryVehicleRepository implements VehicleRepository {
   public items: Vehicle[] = [];
+
+  async findMany(filters: Filters): Promise<Vehicle[]> {
+    const { color, brand } = filters;
+    let vehicles = this.items;
+    if (brand) {
+      vehicles = vehicles.filter((item) => item.getBrand().includes(brand));
+    }
+    if (color) {
+      vehicles = vehicles.filter((item) => item.getColor().includes(color));
+    }
+    return vehicles;
+  }
 
   async findById(id: string): Promise<Vehicle | null> {
     const vehicle = this.items.find((item) => item.getId() === id);

@@ -5,7 +5,7 @@
 - [x] Deve ser possível cadastrar um novo automóvel
 - [x] Deve ser possível atualizar os dados de um automóvel cadastrado
 - [x] Deve ser possível excluir um automóvel cadastrado
-- [] Deve ser possível recuperar um automóvel pelo seu id
+- [x] Deve ser possível recuperar um automóvel pelo seu id
 - [] Deve ser possível listar os automóveis cadastrados e utilizar filtos de marca e cor na listagem
 - [x] Deve ser possível cadastrar um novo motorista
 - [x] Deve ser possível atualizar os dados de um motorista cadastrado

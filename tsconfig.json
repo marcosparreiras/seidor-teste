@@ -8,9 +8,12 @@
     "target": "es2022",
 
     "strict": true,
+    "types": ["vitest/globals"],
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node16"
-  }
+  },
+  "include": ["**/*.ts"],
+  "exclude": []
 }

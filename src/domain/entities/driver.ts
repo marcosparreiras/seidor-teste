@@ -17,6 +17,10 @@ export class Driver {
     return this.name.toString();
   }
 
+  public setName(name: string): void {
+    this.name = new Name(name);
+  }
+
   private constructor(id: UUID, name: Name) {
     this.id = id;
     this.name = name;

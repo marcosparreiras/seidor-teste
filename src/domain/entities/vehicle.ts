@@ -1,4 +1,5 @@
-import { randomUUID } from "crypto";
+import { Plate } from "./value-objects/plate";
+import { UUID } from "./value-objects/uuid";
 
 interface CreateVehicleDTO {
   plate: string;
@@ -7,16 +8,16 @@ interface CreateVehicleDTO {
 }
 
 export class Vehicle {
-  private id: string;
-  private plate: string;
+  private id: UUID;
+  private plate: Plate;
   private color: string;
   private brand: string;
 
   public getId(): string {
-    return this.id;
+    return this.id.toString();
   }
   public getPlate(): string {
-    return this.plate;
+    return this.plate.toString();
   }
   public getColor(): string {
     return this.color;
@@ -25,7 +26,7 @@ export class Vehicle {
     return this.brand;
   }
 
-  private constructor(id: string, plate: string, color: string, brand: string) {
+  private constructor(id: UUID, plate: Plate, color: string, brand: string) {
     this.id = id;
     this.color = color;
     this.plate = plate;
@@ -33,7 +34,8 @@ export class Vehicle {
   }
 
   public static create(input: CreateVehicleDTO): Vehicle {
-    const id = randomUUID();
-    return new Vehicle(id, input.plate, input.color, input.brand);
+    const id = UUID.generate();
+    const plate = new Plate(input.plate);
+    return new Vehicle(id, plate, input.color, input.brand);
   }
 }

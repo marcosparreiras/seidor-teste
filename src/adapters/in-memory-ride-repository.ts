@@ -4,7 +4,7 @@ import type { Ride } from "../domain/entities/ride";
 export class InMemoryRideRepository implements rideRepository {
   public items: Ride[] = [];
 
-  async findByVehicleOrDriverWithOpenRide(
+  async findManyByVehicleOrDriverWithOpenRide(
     vehicleId: string,
     driverId: string
   ): Promise<Ride[]> {
@@ -21,7 +21,17 @@ export class InMemoryRideRepository implements rideRepository {
     return rides;
   }
 
+  async findById(id: string): Promise<Ride | null> {
+    const ride = this.items.find((item) => item.getId() === id);
+    return ride ?? null;
+  }
+
   async insert(ride: Ride): Promise<void> {
     this.items.push(ride);
+  }
+
+  async update(ride: Ride): Promise<void> {
+    const index = this.items.findIndex((item) => item.getId() === ride.getId());
+    this.items[index] = ride;
   }
 }

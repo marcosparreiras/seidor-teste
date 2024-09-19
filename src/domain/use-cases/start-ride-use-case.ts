@@ -41,7 +41,7 @@ export class StartRideUseCase {
       throw new VehicleNotFoundException(input.vehicleId);
     }
     const ridesOpenWithVehicleOrDriver =
-      await this.rideRepository.findByVehicleOrDriverWithOpenRide(
+      await this.rideRepository.findManyByVehicleOrDriverWithOpenRide(
         input.vehicleId,
         input.driverId
       );

@@ -9,17 +9,17 @@
 - [] Deve ser possível listar os automóveis cadastrados e utilizar filtos de marca e cor na listagem
 - [x] Deve ser possível cadastrar um novo motorista
 - [x] Deve ser possível atualizar os dados de um motorista cadastrado
-- [] Deve ser possível excluir um motorista cadastrado
+- [x] Deve ser possível excluir um motorista cadastrado
 - [] Deve ser possível recuperar um motorista pelo seu id
 - [] Deve ser possível listar os motoristas cadastrados e utilizar filtro de nome na listagem
-- [] Deve ser possível registrar a utilização de um automóvel por um motorista, esse registro deve conter data de inicio e descrição do motivo de utilização
+- [x] Deve ser possível registrar a utilização de um automóvel por um motorista, esse registro deve conter data de início e descrição do motivo de utilização
 - [] Deve ser possível encerrar a utilização do automóvel pelo motorista e incluir a data de encerramento no registro de utilização
 - [] Deve ser possível listar todos os registros de utilização de automóveis incluindo os dados do motorista e do automóvel utilizado
 
 ## Regras de Negócio
 
-- [] Um automóvel só pode ser utilizado por um motorista por véz
-- [] Um motorista só pode utilizar um autómovel por véz
+- [x] Um automóvel só pode ser utilizado por um motorista por véz
+- [x] Um motorista só pode utilizar um autómovel por véz
 
 ## Requisitos Não Funcionais
 

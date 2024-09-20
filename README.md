@@ -55,13 +55,13 @@ git clone https://github.com/marcosparreiras/seidor-teste.git
 cd seidor-teste
 ```
 
-3. Instale as dependencias do projeto
+3. Instale as dependências do projeto
 
 ```bash
 npm install
 ```
 
-4. Execute os testes na camada de domínio da applicação
+4. Execute os testes na camada de domínio da aplicação
 
 ```bash
 npm run test:domain
@@ -81,7 +81,7 @@ npm run dev
 
 7. Siga a documentação da sessão `Endpoints` para utilização da API web
 
-## Instuções para execução em container Docker
+## Instruções para execução em container Docker
 
 Antes de prosseguir, certifique-se de ter o docker instalado.
 
@@ -93,7 +93,7 @@ Antes de prosseguir, certifique-se de ter o docker instalado.
 docker run --rm -d -p 3000:3000 marcosparreiras/seidor-teste-app:latest
 ```
 
-### OPÇÃO 02: Execute o build da imagem localmente e inicie o container
+### OPÇÃO 02: Execute o build da imagem localmente e execute o container
 
 1. Faça o clone do projeto
 
@@ -107,7 +107,7 @@ git clone https://github.com/marcosparreiras/seidor-teste.git
 cd seidor-teste
 ```
 
-3. Suba o container docker com a aplicação e incie a aplicação
+3. Suba o container docker com a aplicação
 
 Caso você tenha o `docker-compose` em sua máquina execute:
 
@@ -119,7 +119,7 @@ Caso não tenha, execute:
 
 ```bash
 docker build -t seidor-teste-app . #Para construir a imagem
-docker run -p 3000:3000 -d seidor-teste-app #Para criar e iniciar o container
+docker run -p 3000:3000 -d seidor-teste-app #Para criar e executar o container
 ```
 
 ## Endpoints

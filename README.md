@@ -7,6 +7,7 @@ Sistema de API web para controle e gerenciamento de automóveis de uma empresa.
 - Utiliza o Supertest para testes de requisições HTTP.
 - Utiliza o Vitest como framework de testes.
 - Utiliza persistência de dados em memória.
+- Utiliza o Github Action para integração continua.
 
 ### Requisitos Funcionais
 

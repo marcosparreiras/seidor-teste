@@ -4,7 +4,11 @@
   "description": "## Requisitos Funcionais - [] Deve ser possível cadastrar um novo automóvel - [] Deve ser possível atualizar os dados de um automóvel cadastrado - [] Deve ser possível excluir um automóvel cadastrado - [] Deve ser possível recuperar um automóvel pelo seu id - [] Deve ser possível listar os automóveis cadastrados e utilizar filtos de marca e cor na listagem - [] Deve ser possível cadastrar um novo motorista - [] Deve ser possível atualizar os dados de um motorista cadastrado - [] Deve ser possível recuperar um motorista pelo seu id - [] Deve ser possível listar os motoristas cadastrados e utilizar filtro de nome na listagem - [] Deve ser possível registrar a utilização de um automóvel por um motorista, esse registro deve conter data de inicio e descrição do motivo de utilização - [] Deve ser possível encerrar a utilização do automóvel pelo motorista e incluir a data de encerramento no registro de utilização - [] Deve ser possível listar todos os registros de utilização de automóveis incluindo os dados do motorista e do automóvel utilizado",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test:domain": "vitest run ./src/domain",
+    "test:http": "vitest run ./src/http",
+    "build": "tsup src",
+    "start": "node ./dist/main.js",
+    "dev": "tsx watch ./src/main.ts"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +18,8 @@
     "@types/node": "^22.5.5",
     "@types/supertest": "^6.0.2",
     "supertest": "^7.0.0",
+    "tsup": "^8.3.0",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.2",
     "vitest": "^2.1.1"
   },

@@ -6,7 +6,7 @@ Sistema de API web para controle e gerenciamento de automóveis de uma empresa.
 - Utiliza o Zod para validação de inputs remotos.
 - Utiliza o Supertest para testes de requisições HTTP.
 - Utiliza o Vitest como framework de testes.
-- Utiliza Persistência de dados em memória.
+- Utiliza persistência de dados em memória.
 
 ### Requisitos Funcionais
 

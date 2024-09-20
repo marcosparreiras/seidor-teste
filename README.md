@@ -86,6 +86,14 @@ Antes de prosseguir, certifique-se de ter o docker instalado.
 
 - [Docker](https://docs.docker.com/engine/install/)
 
+### OPÇÃO 01: Execute a aplicação com imagem publicada no Docker Hub
+
+```bash
+docker run --rm -d -p 3000:3000 marcosparreiras/seidor-teste-app:latest
+```
+
+### OPÇÃO 02: Execute o build da imagem localmente e inicie o container
+
 1. Faça o clone do projeto
 
 ```bash

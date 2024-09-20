@@ -38,11 +38,11 @@ Sistema de API web para controle e gerenciamento de automóveis de uma empresa.
 
 ## Instruções Para Execução Local
 
-Certifique-se de ter e o Node.js instalado na versão 20 em sua máquina antes de prosseguir.
+Antes de prosseguir, certifique-se de ter e o Node.js instalado na versão 20 em sua máquina.
 
 - [Node.js](https://nodejs.org/)
 
-1. Faça o colone do projeto
+1. Faça o clone do projeto
 
 ```bash
 git clone https://github.com/marcosparreiras/seidor-teste.git
@@ -79,6 +79,39 @@ npm run dev
 ```
 
 7. Siga a documentação da sessão `Endpoints` para utilização da API web
+
+## Instuções para execução em container Docker
+
+Antes de prosseguir, certifique-se de ter o docker instalado.
+
+- [Docker](https://docs.docker.com/engine/install/)
+
+1. Faça o clone do projeto
+
+```bash
+git clone https://github.com/marcosparreiras/seidor-teste.git
+```
+
+2. Navegue até a pasta do projeto
+
+```bash
+cd seidor-teste
+```
+
+3. Suba o container docker com a aplicação e incie a aplicação
+
+Caso você tenha o `docker-compose` em sua máquina execute:
+
+```bash
+docker compose up -d
+```
+
+Caso não tenha, execute:
+
+```bash
+docker build -t seidor-teste-app . #Para construir a imagem
+docker run -p 3000:3000 -d seidor-teste-app #Para criar e iniciar o container
+```
 
 ## Endpoints
 

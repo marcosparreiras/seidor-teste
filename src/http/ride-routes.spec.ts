@@ -65,4 +65,52 @@ describe("HTTP /ride/*", () => {
     );
     expect(endRideResponse.status).toEqual(204);
   });
+
+  it("Should be able to list rides with vehicle and driver data", async () => {
+    const registerDriverBody = {
+      name: "John Doe",
+    };
+    const registerDriverResponse = await request(expressServer)
+      .post("/driver")
+      .send(registerDriverBody);
+    const registerVehicleBody = {
+      brand: "BMW",
+      color: "white",
+      plate: "HJD5687",
+    };
+    const registerVehicleResponse = await request(expressServer)
+      .post("/vehicle")
+      .send(registerVehicleBody);
+    const { driverId } = registerDriverResponse.body;
+    const { vehicleId } = registerVehicleResponse.body;
+    const registerRideBody = {
+      driverId,
+      vehicleId,
+      reason: "Attending a bussines meeting.",
+    };
+    const startRideResponse = await request(expressServer)
+      .post("/ride")
+      .send(registerRideBody);
+    const listRidesResponse = await request(expressServer).get("/ride");
+    expect(listRidesResponse.status).toEqual(200);
+    expect(listRidesResponse.body.rides).toHaveLength(1);
+    expect(listRidesResponse.body.rides[0]).toEqual(
+      expect.objectContaining({
+        rideId: startRideResponse.body.rideId,
+        startDate: expect.any(String),
+        endDate: null,
+        reason: registerRideBody.reason,
+        driver: expect.objectContaining({
+          driverId,
+          name: registerDriverBody.name,
+        }),
+        vehicle: expect.objectContaining({
+          vehicleId,
+          plate: registerVehicleBody.plate,
+          brand: registerVehicleBody.brand,
+          color: registerVehicleBody.color,
+        }),
+      })
+    );
+  });
 });

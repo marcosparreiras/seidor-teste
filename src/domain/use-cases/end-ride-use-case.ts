@@ -1,5 +1,5 @@
 import { inject } from "../boundaries/domain-registry";
-import type { rideRepository } from "../boundaries/ride-repository";
+import type { RideRepository } from "../boundaries/ride-repository";
 import { RideNotFoundException } from "../exceptions/ride-not-found-exception";
 
 type Input = {
@@ -8,7 +8,7 @@ type Input = {
 
 export class EndRideUseCase {
   @inject("rideRepository")
-  private rideRepository!: rideRepository;
+  private rideRepository!: RideRepository;
 
   public constructor() {}
 

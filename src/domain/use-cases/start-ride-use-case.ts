@@ -1,6 +1,6 @@
 import { inject } from "../boundaries/domain-registry";
 import type { DriverRepository } from "../boundaries/driver-repository";
-import type { rideRepository } from "../boundaries/ride-repository";
+import type { RideRepository } from "../boundaries/ride-repository";
 import type { VehicleRepository } from "../boundaries/vehicle-repository";
 import { Ride } from "../entities/ride";
 import { DriverNotFoundExcepiton } from "../exceptions/driver-not-found-exception";
@@ -19,7 +19,7 @@ type Output = {
 
 export class StartRideUseCase {
   @inject("rideRepository")
-  private rideRepository!: rideRepository;
+  private rideRepository!: RideRepository;
 
   @inject("driverRepository")
   private driverRepository!: DriverRepository;

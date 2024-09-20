@@ -1,8 +1,12 @@
-import type { rideRepository } from "../domain/boundaries/ride-repository";
+import type { RideRepository } from "../domain/boundaries/ride-repository";
 import type { Ride } from "../domain/entities/ride";
 
-export class InMemoryRideRepository implements rideRepository {
+export class InMemoryRideRepository implements RideRepository {
   public items: Ride[] = [];
+
+  async findMany(): Promise<Ride[]> {
+    return this.items;
+  }
 
   async findManyByVehicleOrDriverWithOpenRide(
     vehicleId: string,

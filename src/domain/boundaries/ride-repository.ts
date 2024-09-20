@@ -1,6 +1,7 @@
 import type { Ride } from "../entities/ride";
 
-export interface rideRepository {
+export interface RideRepository {
+  findMany(): Promise<Ride[]>;
   findManyByVehicleOrDriverWithOpenRide(
     vehicleId: string,
     driverId: string

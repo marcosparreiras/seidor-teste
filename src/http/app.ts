@@ -5,6 +5,11 @@ import { updateVehicleController } from "./controllers/update-vehicle-controller
 import { getVehicleController } from "./controllers/get-vehicle-controller";
 import { deleteVehicleController } from "./controllers/delete-vehicle-controller";
 import { getManyVehiclesController } from "./controllers/get-many-vehicles-controller";
+import { registerDriverController } from "./controllers/register-driver-controller";
+import { getDriverController } from "./controllers/get-driver-controller";
+import { updateDriverController } from "./controllers/update-driver-controller";
+import { deleteDriverController } from "./controllers/delete-driver-controller";
+import { getManyDriversController } from "./controllers/get-many-drivers-controller";
 
 export const expressServer = express();
 expressServer.use(express.json());
@@ -13,4 +18,9 @@ expressServer.get("/vehicle", getManyVehiclesController);
 expressServer.get("/vehicle/:vehicleId", getVehicleController);
 expressServer.put("/vehicle/:vehicleId", updateVehicleController);
 expressServer.delete("/vehicle/:vehicleId", deleteVehicleController);
+expressServer.post("/driver", registerDriverController);
+expressServer.get("/driver", getManyDriversController);
+expressServer.get("/driver/:driverId", getDriverController);
+expressServer.put("/driver/:driverId", updateDriverController);
+expressServer.delete("/driver/:driverId", deleteDriverController);
 expressServer.use(errorHandlerMiddleware);

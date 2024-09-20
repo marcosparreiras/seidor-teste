@@ -10,6 +10,7 @@ describe("Name (Value-Object)", () => {
     "Érica",
     "João Paulo",
     "Bruna Silva",
+    "John Albert Doe",
   ])("Should be able to validate names with correct format", (value) => {
     const plate = new Name(value);
     expect(plate.toString()).toEqual(value);

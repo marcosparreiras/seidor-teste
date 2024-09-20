@@ -9,6 +9,93 @@ describe("HTTP /vehicle/*", () => {
     registry.register("vehicleRepository", new InMemoryVehicleRepository());
   });
 
+  it("Should be able to register a new vehicle", async () => {
+    const registerVehicleBody = {
+      plate: "PUJ5426",
+      brand: "BMW",
+      color: "white",
+    };
+    const registerVehicleResponse = await request(expressServer)
+      .post("/vehicle")
+      .send(registerVehicleBody);
+    expect(registerVehicleResponse.status).toEqual(201);
+    expect(registerVehicleResponse.body.vehicleId).toEqual(expect.any(String));
+  });
+
+  it("Should be able to get a vehicle data", async () => {
+    const registerVehicleBody = {
+      plate: "PUJ5426",
+      brand: "BMW",
+      color: "white",
+    };
+    const registerVehicleResponse = await request(expressServer)
+      .post("/vehicle")
+      .send(registerVehicleBody);
+    const { vehicleId } = registerVehicleResponse.body;
+    const getVehicleResponse = await request(expressServer).get(
+      `/vehicle/${vehicleId}`
+    );
+    expect(getVehicleResponse.status).toEqual(200);
+    expect(getVehicleResponse.body).toEqual(
+      expect.objectContaining({
+        vehicleId: vehicleId,
+        plate: registerVehicleBody.plate,
+        brand: registerVehicleBody.brand,
+        color: registerVehicleBody.color,
+      })
+    );
+  });
+
+  it("Should be able to update a vehicle data", async () => {
+    const registerVehicleBody = {
+      plate: "PUJ5426",
+      brand: "BMW",
+      color: "white",
+    };
+    const registerVehicleResponse = await request(expressServer)
+      .post("/vehicle")
+      .send(registerVehicleBody);
+    const { vehicleId } = registerVehicleResponse.body;
+    const updateVehicleBody = {
+      color: "black",
+    };
+    const updateVehicleResponse = await request(expressServer)
+      .put(`/vehicle/${vehicleId}`)
+      .send(updateVehicleBody);
+    expect(updateVehicleResponse.status).toEqual(204);
+    const getVehicleResponse = await request(expressServer).get(
+      `/vehicle/${vehicleId}`
+    );
+    expect(getVehicleResponse.body).toEqual(
+      expect.objectContaining({
+        vehicleId: vehicleId,
+        plate: registerVehicleBody.plate,
+        brand: registerVehicleBody.brand,
+        color: updateVehicleBody.color,
+      })
+    );
+  });
+
+  it("Should be able to delete a vehicle", async () => {
+    const registerVehicleBody = {
+      plate: "PUJ5426",
+      brand: "BMW",
+      color: "white",
+    };
+    const registerVehicleResponse = await request(expressServer)
+      .post("/vehicle")
+      .send(registerVehicleBody);
+    const { vehicleId } = registerVehicleResponse.body;
+    const deleteVehicleResponse = await request(expressServer).delete(
+      `/vehicle/${vehicleId}`
+    );
+    expect(deleteVehicleResponse.status).toEqual(204);
+    const getVehicleResponse = await request(expressServer).get(
+      `/vehicle/${vehicleId}`
+    );
+    expect(getVehicleResponse.status).toEqual(400);
+  });
+
   it("Should be able to list vehicles", async () => {
     const vehiclesToRegister = [
       {
@@ -52,43 +139,6 @@ describe("HTTP /vehicle/*", () => {
         color: "white",
       })
     );
-  });
-
-  it("Should be able to do a vehicle life cycle (create, update, read, delete)", async () => {
-    // POST /vehcile
-    const registerVehicleBody = {
-      plate: "PUJ5426",
-      brand: "BMW",
-      color: "white",
-    };
-    const registerVehicleResponse = await request(expressServer)
-      .post("/vehicle")
-      .send(registerVehicleBody);
-    const { vehicleId } = registerVehicleResponse.body;
-    expect(registerVehicleResponse.status).toEqual(201);
-
-    // PUT /vehicle/vehicleId
-    const updateVehicleBody = { color: "black" };
-    const updateVehicleResponse = await request(expressServer)
-      .put(`/vehicle/${vehicleId}`)
-      .send(updateVehicleBody);
-    expect(updateVehicleResponse.status).toEqual(204);
-
-    // GET /vehicle/vehicleId
-    const getVehicleResponse = await request(expressServer).get(
-      `/vehicle/${vehicleId}`
-    );
-    expect(getVehicleResponse.status).toEqual(200);
-    expect(getVehicleResponse.body.vehicleId).toEqual(vehicleId);
-    expect(getVehicleResponse.body.plate).toEqual(registerVehicleBody.plate);
-    expect(getVehicleResponse.body.brand).toEqual(registerVehicleBody.brand);
-    expect(getVehicleResponse.body.color).toEqual(updateVehicleBody.color);
-
-    // DELETE /vehicle/vehicleId
-    const deleteVehicleResponse = await request(expressServer).delete(
-      `/vehicle/${vehicleId}`
-    );
-    expect(deleteVehicleResponse.status).toEqual(204);
   });
 
   it("Should not be able to register a vehicle with invalid plate format", async () => {

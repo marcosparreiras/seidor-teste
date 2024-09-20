@@ -10,6 +10,8 @@ import { getDriverController } from "./controllers/get-driver-controller";
 import { updateDriverController } from "./controllers/update-driver-controller";
 import { deleteDriverController } from "./controllers/delete-driver-controller";
 import { getManyDriversController } from "./controllers/get-many-drivers-controller";
+import { startRideController } from "./controllers/start-ride-controller";
+import { endRideController } from "./controllers/end-ride-controller";
 
 export const expressServer = express();
 expressServer.use(express.json());
@@ -23,4 +25,6 @@ expressServer.get("/driver", getManyDriversController);
 expressServer.get("/driver/:driverId", getDriverController);
 expressServer.put("/driver/:driverId", updateDriverController);
 expressServer.delete("/driver/:driverId", deleteDriverController);
+expressServer.post("/ride", startRideController);
+expressServer.patch("/ride/:rideId/end", endRideController);
 expressServer.use(errorHandlerMiddleware);
